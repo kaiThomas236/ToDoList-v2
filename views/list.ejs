@@ -1,0 +1,43 @@
+<%- include('header'); %>
+
+<div class="box" id="heading">
+    <h1><%= day %></h1>
+    <h3><%= subtitle %></h3>
+</div>
+
+
+<div class="box">
+
+    <% newItems.forEach(function(item) { %>
+        
+
+        
+        <div class="item">
+            <form action="/delitem" method="post">
+                <button class="delete" type="submit" name="delItem" value="<%=item.name + "|" + subtitle%>" style="font-family: sans-serif;">x</button>
+            </form>
+            <form action="/checkItem" method="post">
+                <div class="item">
+                <% if (item.checked === true) { %>
+                    <input type="checkbox" checked name="checkItem" onclick="this.form.submit()" value="<%=item.name + "|" + subtitle%>">
+                    <p> <%= item.name %> </p>
+                <% } else { %>
+                    <input type="checkbox" name="checkItem" onclick="this.form.submit()" value="<%=item.name + "|" + subtitle%>">
+                        <p> <%= item.name %> </p>
+                <% } %>
+                <input type="hidden" hidden name="checkItem" onclick="this.form.submit()" value="<%=item.name + "|" + subtitle%>">
+                </div>
+            </form>
+            
+            
+        </div>
+        
+    <% }); %>
+    
+    <form class="item" action="/additem" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button class="add" type="submit" name="title" value="<%=subtitle%>">+</button>
+    </form>
+</div>
+
+<%- include('footer'); %>
