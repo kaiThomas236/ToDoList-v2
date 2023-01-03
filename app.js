@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb://127.0.0.1:27017/toDoListDB");
+mongoose.connect("mongodb+srv://admin-kai:test123@cluster0.dyrs9ij.mongodb.net/toDoListDB");
 
 
 
